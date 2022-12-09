@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<%
+/**
+ * @classification UNCLASSIFIED
+ *
+ * @module views.layout
+ *
+ * @copyright Copyright (C) 2018, Lockheed Martin Corporation
+ *
+ * @license Apache-2.0
+ *
+ * @owner James Eckstein
+ *
+ * @author Josh Kaplan
+ * @author Jake Ursetta
+ * @author Leah De Laurell
+ *
+ * @description The layout file is the base template for all other views.
+ */
+%>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>
+      <%= title || 'MBEE | Model-Based Engineering Environment' %>
+    </title>
+
+    <link rel="icon" type="img/ico" href="/img/favicon.ico">
+
+    <!-- CSS -->
+    <!--<link rel="stylesheet" type="text/css" href="/css/meyer.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>-->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+    <%- defineContent('styles') %>
+  </head>
+
+  <body class="mbee-theme">
+
+    <% if (ui.banner.on) { %>
+      <div id="header-footer">
+      <%- include('_includes/banner-header'); %>
+    <% } %>
+        <div id="root" class="root">
+          <div id="nav" class="nav"></div>
+          <%- body %>
+        </div>
+
+    <% if (ui.banner.on) { %>
+      <%- include('_includes/banner-footer'); %>
+      </div>
+    <% } %>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script async type="text/javascript" src="/js/jquery-ui.min.js"></script>
+    <script async type="text/javascript" src="/js/popper.min.js"></script>
+    <script async type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/mbee.min.js"></script>
+    <!-- React Scripts -->
+    <script type="text/javascript" src="/js/navbar.js"></script>
+    <!-- Custom Scripts -->
+    <%- defineContent('scripts') %>
+  </body>
+</html>
